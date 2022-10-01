@@ -1,0 +1,12 @@
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, HEAD"
+Header always set Access-Control-Allow-Headers "x-requested-with"
+
+Header always set Keep-Alive "timeout=50, max=1000"
+
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule .* / [R=200,L]
+
+RewriteEngine On
+RewriteRule ^((?!index\.php).+)$ /index.php [L]
